@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "androidWidget"
 include(":app")
- 
+include(":widget")
