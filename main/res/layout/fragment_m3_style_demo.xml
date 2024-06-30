@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1a1c17">
+
+
+    <com.litao.slider.NiftySlider
+        android:id="@+id/nifty_slider"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:padding="16dp"
+        android:value="1"
+        android:valueFrom="0"
+        android:valueTo="100"
+        app:trackColor="@color/m3_demo_track_color"
+        app:trackColorInactive="@color/m3_demo_track_inactive_color"
+        app:thumbColor="@color/m3_demo_thumb_color"
+        app:thumbShadowColor="@color/white"
+        app:haloColor="@color/m3_demo_halo_color"
+        app:tipViewVisible="true"
+        app:tipViewBackground="@color/m3_demo_color"
+        app:enableProgressAnim ="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
