@@ -1,4 +1,4 @@
-package com.eathemeat.androidwidget.ui.theme
+package com.eathemeat.androidwidget.main.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

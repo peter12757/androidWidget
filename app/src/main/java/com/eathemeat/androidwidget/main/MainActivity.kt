@@ -1,30 +1,27 @@
-package com.eathemeat.androidwidget
+package com.eathemeat.androidwidget.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.eathemeat.androidwidget.ui.theme.AndroidWidgetTheme
+import com.eathemeat.androidwidget.databinding.ActivityMainBinding
+import com.eathemeat.androidwidget.main.ui.theme.AndroidWidgetTheme
+import com.eathemeat.androidwidget.slide.SlideActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            AndroidWidgetTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+        var binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.apply {
+            clSlide.setOnClickListener() {
+                var intent = Intent(it.context,SlideActivity::class.java)
+                it.context.startActivity(intent)
             }
         }
     }
