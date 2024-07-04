@@ -1,11 +1,10 @@
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     `maven-publish`
 }
 
-group = "com.eathemeat"
-version="1.0.0"
 
 android {
     namespace = "com.eathemeat.widget"
@@ -20,6 +19,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+
 
     buildTypes {
         release {
@@ -40,30 +40,37 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
-            withJavadocJar()
+//            withJavadocJar()
         }
     }
+
 }
+
 
 publishing {
     publications {
+
         register<MavenPublication>("release") {
             groupId = "io.github.peter12757"
             artifactId = "androidWidget"
-            version = "1.0.1"
-
+            version = "1.0.3"
             pom {
                 name = "androidWidget"
-                description = "A concise description of my library"
+                version = "1.0.3"
+                artifactId = "androidWidget"
+                groupId  ="io.github.peter12757"
+                packaging  ="aar"
+                description  ="android widget"
                 url = "https://github.com/peter12757/androidWidget"
-                properties = mapOf(
-//                    "myProp" to "value",
-//                    "prop.with.dots" to "anotherValue"
-                )
+                scm {
+                    url = "https://github.com/peter12757/androidWidget/tree/main"
+                    connection = "scm:git@github.com:peter12757/androidWidget.git"
+                    developerConnection = "scm:git@github.com:peter12757/androidWidget.git"
+                }
                 licenses {
                     license {
                         name = "The Apache License, Version 2.0"
-                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        url ="http://www.apache.org/licenses/LICENSE-2.0.txt"
                     }
                 }
                 developers {
@@ -73,18 +80,29 @@ publishing {
                         email = "peter12757@126.com"
                     }
                 }
-//                scm {
-//                    connection = "scm:git:git://example.com/my-library.git"
-//                    developerConnection = "scm:git:ssh://example.com/my-library.git"
-//                    url = "http://example.com/my-library/"
-//                }
-            }
-
-            afterEvaluate {
-                from(components["release"])
             }
         }
+
     }
+
+
+
+    repositories {
+//        maven {
+//            name = "sonatypeMaven"
+//            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+//            credentials {
+//                username = "mDyL/4qG"
+//                password = "dvvm4Nj1YY7f+xBDysym3UeMURoQjcLvG3G34cQlplVY"
+//            }
+//        }
+        maven {
+            name = "localMaven"
+            url = uri("./repository")
+        }
+
+    }
+
 }
 
 dependencies {
