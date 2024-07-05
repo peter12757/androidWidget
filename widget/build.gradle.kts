@@ -37,10 +37,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     publishing {
         singleVariant("release") {
             withSourcesJar()
-//            withJavadocJar()
+            withJavadocJar()
         }
     }
 
@@ -49,11 +50,13 @@ android {
 
 publishing {
     publications {
-
         register<MavenPublication>("release") {
             groupId = "io.github.peter12757"
             artifactId = "androidWidget"
             version = "1.0.3"
+            afterEvaluate {
+                from(components["release"])
+            }
             pom {
                 name = "androidWidget"
                 version = "1.0.3"
@@ -88,18 +91,6 @@ publishing {
 
 
     repositories {
-//        maven {
-//            name = "sonatypeMaven"
-//            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-//            credentials {
-//                username = "mDyL/4qG"
-//                password = "dvvm4Nj1YY7f+xBDysym3UeMURoQjcLvG3G34cQlplVY"
-//            }
-//        }
-        maven {
-            name = "localMaven"
-            url = uri("./repository")
-        }
 
     }
 
